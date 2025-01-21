@@ -15,7 +15,7 @@
 
 .navbar-name {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-decoration: none;
   margin-left: 30px;
   color: rgb(57, 57, 97);
@@ -82,7 +82,7 @@
     right: 0;
     width: 50%;
     height: 100%;
-    background: linear-gradient(180deg, #9297be, #d6aee6);
+    background: linear-gradient(180deg, #d6aee6,#9297be);
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     padding: 2rem;
     gap: 1.5rem;
@@ -92,14 +92,14 @@
 
   .menu-open {
     display: flex;
-    margin-top: 65px;
+    margin-top: 52px;
     margin-right: -5px;
     transform: translateX(0); 
   }
 
   .menu a {
     color: rgb(57, 57, 97);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
   }
 
