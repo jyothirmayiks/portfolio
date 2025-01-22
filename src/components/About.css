@@ -1,7 +1,7 @@
 .about-section {
     display: flex;
     position: relative;
-    background: linear-gradient(120deg, #9297be, #d6aee6); 
+    background: linear-gradient(90deg, #9297be, #d6aee6); 
     color: rgb(42, 42, 70);
     padding: 5rem 2rem;
     align-items: center;
