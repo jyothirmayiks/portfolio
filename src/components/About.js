@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import download from "/home/jyothirmayiks/portfolio_web/src/assets/download.png";
+import Jyothi from "/home/jyothirmayiks/Downloads/portfolio/src/assets/jyothi.png";
 
 const About = () => {
   return (
@@ -23,7 +23,7 @@ const About = () => {
           </p>
         </div>
         <div className="about-image">
-          <img src={download} alt="jyothi" />
+          <img src={Jyothi} alt="jyothi" />
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Education.css";
-import coding from "/home/jyothirmayiks/portfolio_web/src/assets/coding.png";  
+import coding from "/home/jyothirmayiks/Downloads/portfolio/src/assets/coding.png";  
 
 const Education = () => {
   const educationData = [

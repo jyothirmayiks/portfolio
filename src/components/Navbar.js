@@ -9,8 +9,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
-      <a href="#home" className="navbar-name">
+    <nav className="personalnavbar">
+      <a href="#home" className="personalnavbar-name">
         Jyothi.
       </a>
       <button className="menu-toggle" onClick={toggleMenu}>

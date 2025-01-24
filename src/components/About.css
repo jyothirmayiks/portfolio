@@ -74,12 +74,10 @@
   }
   
   .about-image img {
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
-    margin-left: 100px;
-    border-radius: 20px;
-    box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 30px;
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.3);
   }
   
   .about-image img:hover {
