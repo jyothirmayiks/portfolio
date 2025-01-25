@@ -10,7 +10,7 @@ const Projects = () => {
     <section id="projects" className="projects-section">
       <div className="projects-header">
         <h2>MY PROJECTS</h2>
-        <p>Some of the exciting works I have done so far!.</p>
+        <p>Some of the exciting works I have done so far!</p>
       </div>
       <div className="projects-container">
         <div className="project-card">
