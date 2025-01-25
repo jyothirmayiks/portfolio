@@ -12,14 +12,14 @@ const About = () => {
         <div className="about-text">
           <h2>Who I am</h2>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+            Hi, I'm <strong>Jyothirmayi</strong>, a passionate software developer with a
+            background in Electronics and Communication Engineering. I
+            specialize in full-stack web development using technologies like
+            React, Spring Boot, and PostgreSQL. I enjoy creating user-friendly
+            applications and am always eager to learn and grow.
           </p>
           <p>
-            It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged.
+          Let's connect and collaborate on exciting projects!
           </p>
         </div>
         <div className="about-image">
