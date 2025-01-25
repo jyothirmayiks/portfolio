@@ -37,20 +37,13 @@
   
   .about-container {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
     gap: 2rem;
     max-width: 1200px;
     align-items: center;
     width: 100%;
   }
   
-  @media (min-width: 768px) {
-    .about-container {
-      flex-direction: row;
-      text-align: left;
-      gap: 4rem;
-    }
-  }
   
   .about-text {
     flex: 1;
@@ -65,19 +58,16 @@
     font-family: 'Ubuntu', sans-serif;
   }
   
-  .about-text strong {
-    color: #3f174e;
-  }
   
   .about-image {
     flex: 1;
   }
   
   .about-image img {
-    max-width: 90%;
+    max-width: 100%;
     height: auto;
-    margin-left: 30px;
-    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.3);
+    margin-left: -30px;
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
   }
   
   .about-image img:hover {
