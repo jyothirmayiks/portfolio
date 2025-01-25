@@ -34,7 +34,7 @@ const Contact = () => {
         
         <div className="contact-right">
           <h3>Get In Touch</h3>
-          <p>Email: <a href="mailto:jothirmayi@gmail.com">jothirmayi@gmail.com</a></p>
+          <p>Email: <a href="mailto:jothirmayi@gmail.com">jothirmayiks@gmail.com</a></p>
           <p>Phone: <a href="tel:+919562222500">+91 9562222500</a></p>
           <p>Location: Thrissur, Kerala, India</p>
           <div className="contact-icons">

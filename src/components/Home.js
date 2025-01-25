@@ -1,6 +1,5 @@
-import React from 'react';
+import React from "react";
 import "./Home.css";
-
 
 const Home = () => {
   return (
@@ -8,15 +7,14 @@ const Home = () => {
       <h2>Hey, This is Jyothirmayi!</h2>
       <h1>WEB DEVELOPER</h1>
       <a
-       href="/Btech_Jyothirmayi_.pdf"
-       download="Jyothi_Resume.pdf"
-       className="resume-btn"
+        href="/Btech_Jyothirmayi_.pdf" 
+        download="Jyothi_Resume.pdf" 
+        className="resume-btn"
       >
-      Get Resume <i className="bi bi-download ms-2"></i>
+        Get Resume <i className="bi bi-download ms-2"></i>
       </a>
-
     </section>
-  )
-}
+  );
+};
 
 export default Home;
