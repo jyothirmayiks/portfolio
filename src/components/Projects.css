@@ -82,16 +82,17 @@
 
 .arrow {
   position: absolute;
-  bottom: 15px; 
+  bottom: 15px;
   left: 50%;
-  transform: translateX(-50%);
+  margin-left: -25px;
   font-size: 1.5rem;
-  padding: -10px;
   color: #746274;
   background-color: transparent;
-  border:none;
+  border: none;
   text-decoration: none;
   width: 50px;
+  cursor: pointer; 
+  transition: color 0.3s ease;
 }
 
 .arrow:hover {
@@ -100,4 +101,143 @@
 
 .project-link i {
   font-size: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .projects-carousel {
+    gap: 1rem; 
+    overflow-x: auto; 
+    padding: 0.5rem 3rem;
+    justify-content: flex-start;
+  }
+
+  .projects-carousel::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .projects-carousel::-webkit-scrollbar-track {
+    background: #d6aee6;
+    border-radius: 4px;
+  }
+
+  .projects-carousel::-webkit-scrollbar-thumb {
+    background: #8a94e1;
+    border-radius: 4px;
+  }
+
+  .project-card {
+    width: 180px; 
+    height: 350px; 
+    padding: 20px;
+  }
+
+  .project-card h3 {
+    font-size: 0.9rem; 
+  }
+
+  .project-card p {
+    font-size: 0.8rem; 
+  }
+
+  .project-card.active{
+    width: 200px;
+    height: 300px;
+    padding: 1.7rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .projects-carousel {
+    gap: 0.5rem; 
+    padding: 0.5rem 3rem;
+    justify-content: flex-start;
+  }
+
+  .projects-carousel::-webkit-scrollbar {
+    height: 6px; 
+  }
+
+  .projects-carousel::-webkit-scrollbar-track {
+    background: #d6aee6;
+    border-radius: 4px;
+  }
+
+  .projects-carousel::-webkit-scrollbar-thumb {
+    background: #8a94e1;
+    border-radius: 4px;
+  }
+
+  .project-card {
+    width: 150px; 
+    height: 250px; 
+    padding: 10px;
+  }
+
+  .project-card h3 {
+    font-size: 0.8rem;
+  }
+
+  .project-card p {
+    font-size: 0.7rem;
+  }
+
+  
+}
+
+
+@media (max-width: 480px) {
+
+  .projects-section{
+    min-height: 50vh;
+  }
+
+  .projects-carousel {
+    gap: 0.5rem;
+    overflow-x: scroll;
+    padding: 0.5rem 3rem;
+    justify-content: flex-start;
+  }
+
+  .projects-carousel::-webkit-scrollbar {
+    height: 5px; 
+  }
+
+  .projects-carousel::-webkit-scrollbar-track {
+    background: #d6aee6;
+    border-radius: 4px;
+  }
+
+  .projects-carousel::-webkit-scrollbar-thumb {
+    background: #8a94e1;
+    border-radius: 4px;
+  }
+
+  .project-card {
+    width: 130px; 
+    height: 250px;
+    padding: 8px;
+  }
+
+  .project-card h3 {
+    font-size: 0.7rem;
+  }
+
+  .project-card p {
+    font-size: 0.6rem;
+  }
+
+  .project-card.active{
+    width: 200px;
+    height: 280px;
+    padding: 1.7rem;
+  }
+
+  .projects-header h2{
+    font-size: 1.8rem;
+  }
+
+  .projects-header p{
+    font-size: 1rem;
+  }
 }

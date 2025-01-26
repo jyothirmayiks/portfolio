@@ -14,7 +14,6 @@ const Navbar = () => {
     setMenuOpen(false);
   };
 
- 
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "education", "projects", "contact"];
@@ -41,7 +40,12 @@ const Navbar = () => {
 
   return (
     <nav className="personalnavbar">
-      <a href="#home" className="personalnavbar-name">
+      <a
+        className="personalnavbar-name"
+        onClick={() => scrollToSection("home")}
+        role="button"
+        tabIndex="0"
+      >
         Jyothi.
       </a>
       <button className="menu-toggle" onClick={toggleMenu}>
@@ -53,36 +57,48 @@ const Navbar = () => {
         <a
           className={activeSection === "home" ? "active" : ""}
           onClick={() => scrollToSection("home")}
+          role="button"
+          tabIndex="0"
         >
           Home
         </a>
         <a
           className={activeSection === "about" ? "active" : ""}
           onClick={() => scrollToSection("about")}
+          role="button"
+          tabIndex="0"
         >
           About
         </a>
         <a
           className={activeSection === "skills" ? "active" : ""}
           onClick={() => scrollToSection("skills")}
+          role="button"
+          tabIndex="0"
         >
           Skills
         </a>
         <a
           className={activeSection === "education" ? "active" : ""}
           onClick={() => scrollToSection("education")}
+          role="button"
+          tabIndex="0"
         >
           Education
         </a>
         <a
           className={activeSection === "projects" ? "active" : ""}
           onClick={() => scrollToSection("projects")}
+          role="button"
+          tabIndex="0"
         >
           Projects
         </a>
         <a
           className={activeSection === "contact" ? "active" : ""}
           onClick={() => scrollToSection("contact")}
+          role="button"
+          tabIndex="0"
         >
           Contact
         </a>

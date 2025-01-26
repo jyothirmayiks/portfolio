@@ -37,6 +37,7 @@
     color: rgb(42, 42, 70);
     padding: 5px;
     margin-left: 60px;
+    text-align: center;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   }
   
@@ -134,3 +135,116 @@
     color: rgb(57, 57, 97);
   }
   
+  @media (max-width: 1024px) {
+    .education-header {
+      flex-direction: row; 
+      align-items: center;
+      gap: 20rem;
+      margin-top: 70px;
+    }
+  
+    .education-image {
+     width: 50%;
+     margin-left: -200px;
+    }
+  
+    .education-container {
+      max-width: 500px;
+    }
+  
+    .education-box {
+      padding: 1.5rem; 
+      margin-top: 50px;
+      border: none;
+      margin-bottom: -50px;
+      width: 120%;
+    }
+  
+    .education-degree {
+      font-size: 1.1rem; 
+    }
+  
+    .education-institution {
+      font-size: 0.9rem;
+    }
+  
+    .education-year {
+      font-size: 0.85rem;
+    }
+  }
+  
+  
+  @media (max-width: 768px) {
+    .education-header {
+      min-height: 50vh;
+    }
+  
+    .education-image {
+     display: none;
+    }
+
+    .education-container {
+      max-width: 100%;
+      margin-top: 80px;
+    }
+  
+    .education-box {
+      justify-content: center;
+      width: 100%;
+    }
+  
+    .education-degree {
+      font-size: 1rem; 
+    }
+  
+    .education-institution {
+      font-size: 0.85rem;
+    }
+  
+    .education-year {
+      font-size: 0.8rem;
+    }
+
+    .education-title{
+      text-align: center;
+    }
+  }
+  
+ 
+  @media (max-width: 480px) {
+    .education-header {
+      flex-direction: column; 
+      min-height: 50vh;
+    }
+
+    .education-image {
+      display: none;
+    }
+  
+    .education-container {
+      max-width: 100%;
+      margin-top: 50px;
+    }
+  
+    .education-box {
+      justify-content: center;
+      width: 100%;
+    }
+  
+    .education-degree {
+      font-size: 0.9rem;  
+    }
+  
+    .education-institution {
+      font-size: 0.8rem;
+    }
+  
+    .education-year {
+      font-size: 0.75rem;
+    }
+
+    .education-title{
+      font-size: 1.8rem;
+      text-align: center;
+    }
+  }
