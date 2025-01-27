@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "./ProjectPageCss.css";
@@ -11,6 +11,10 @@ import Hardware5 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h12.jp
 
 const HomeAutomation = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   const goToProjects = () => {
     navigate("/");
@@ -35,7 +39,7 @@ const HomeAutomation = () => {
 
   return (
     <div className="home-automation-page">
-      <nav className="navbar">
+      <nav className="pronavbar">
         <button className="go-back-btn" onClick={goToProjects}>
           <i className="bi bi-box-arrow-left"></i>
         </button>

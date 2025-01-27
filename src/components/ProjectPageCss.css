@@ -7,12 +7,16 @@
 }
 
 
-.navbar {
+.pronavbar {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   background: linear-gradient(90deg, #9297be, #d6aee6);
-  padding: 2rem 2rem;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -241,7 +245,7 @@ button:hover, a:hover {
   }
 
   .archimage {
-    max-width: 80%;
+    max-width: 100%;
     margin: 0 auto;
   }
 

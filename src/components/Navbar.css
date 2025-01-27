@@ -78,6 +78,7 @@
 @media (max-width: 1024px) {
   .personalnavbar {
     padding: 0.8rem 1.5rem;
+    width: 100%;
   }
 
 }
