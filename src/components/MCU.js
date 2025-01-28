@@ -1,21 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
+import axios from "axios"; 
 import "./ProjectPageCss.css";
-
-import Hardware1 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h13.jpeg";
-import Hardware2 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h14.jpeg";
-import Hardware3 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h15.jpeg";
-import Hardware4 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h16.jpeg";
-import Hardware5 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h17.jpeg";
-import Hardware6 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h18.jpeg";
 
 const HomeAutomation = () => {
   const navigate = useNavigate();
+  const [projectData, setProjectData] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]); 
+  const projectId = "3b6054cc-c2ad-4c89-95e4-35ee51a48712"; 
 
-   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/projects/${projectId}`)
+      .then((response) => {
+        const data = response.data.response;
+        setProjectData(data);
+
+        
+        if (data.images) {
+          const urls = data.images.map(base64 => `data:image/jpeg;base64,${base64}`);
+          setImageUrls(urls);
+        }
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the project data!", error);
+      });
+
+    window.scrollTo(0, 0);
+  }, []);
 
   const goToProjects = () => {
     navigate("/");
@@ -38,6 +50,12 @@ const HomeAutomation = () => {
     autoplaySpeed: 3000,
   };
 
+  if (!projectData) {
+    return <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>;
+  }
+
   return (
     <div className="home-automation-page">
       <nav className="pronavbar">
@@ -47,80 +65,23 @@ const HomeAutomation = () => {
       </nav>
 
       <header className="page-header">
-        <h1>MCU SITE</h1>
+        <h1>{projectData.title}</h1>
       </header>
 
       <div className="content">
-        <p>
-          The Marvel Cinematic Universe (MCU) has captivated audiences worldwide
-          with its iconic characters and compelling storylines. Each character
-          brings a unique blend of personality, power, and purpose, making the
-          MCU a rich and interconnected universe of heroes, villains, and
-          everything in between. An MCU character page serves as a comprehensive
-          hub to explore the fascinating details about these beloved
-          characters—their origins, powers, affiliations, and their pivotal
-          roles in shaping the overarching narrative. Whether you're a casual
-          fan or a Marvel enthusiast, this page offers an exciting glimpse into
-          the world of your favorite superheroes and villains.
-        </p>
+        <p>{projectData.description1}</p>
 
-        <h2>WEBPAGE DESIGN</h2>
+        <h2>{projectData.heading}</h2>
+
         <Slider {...sliderSettings} className="hardware-slider">
-          <div>
-            <img
-              src={Hardware1}
-              alt="Hardware Setup Image 1"
-              className="slider-image"
-            />
-          </div>
-          <div>
-            <img
-              src={Hardware2}
-              alt="Hardware Setup Image 2"
-              className="slider-image"
-            />
-          </div>
-          <div>
-            <img
-              src={Hardware3}
-              alt="Hardware Setup Image 1"
-              className="slider-image"
-            />
-          </div>
-          <div>
-            <img
-              src={Hardware4}
-              alt="Hardware Setup Image 2"
-              className="slider-image"
-            />
-          </div>
-          <div>
-            <img
-              src={Hardware5}
-              alt="Hardware Setup Image 1"
-              className="slider-image"
-            />
-          </div>
-          <div>
-            <img
-              src={Hardware6}
-              alt="Hardware Setup Image 2"
-              className="slider-image"
-            />
-          </div>
+          {imageUrls.map((url, index) => (
+            <div key={index}>
+              <img src={url} alt={`Hardware Setup ${index + 1}`} className="slider-image" />
+            </div>
+          ))}
         </Slider>
 
-        <p>
-          The MCU character page is more than just a collection of profiles—it's
-          a gateway to understanding the essence of what makes these characters
-          unforgettable. From their heroic journeys to their struggles and
-          triumphs, every story contributes to the larger Marvel tapestry. By
-          diving into their backgrounds, relationships, and iconic moments, fans
-          can relive the magic of the MCU while discovering new dimensions of
-          their favorite characters. Whether you're revisiting old favorites or
-          discovering new ones, this page is a celebration of the Marvel
-          universe and its enduring legacy.
-        </p>
+        <p>{projectData.description2}</p>
       </div>
 
       <footer className="footer">

@@ -1,15 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Slider from "react-slick"; 
+import Slider from "react-slick";
+import axios from "axios"; 
 import "./ProjectPageCss.css";
-import Home from "/home/jyothirmayiks/Downloads/portfolio/src/assets/1 (5).png";
-import Hardware1 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h1.jpeg"; 
-import Hardware2 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h2.jpeg";
 
 const HomeAutomation = () => {
   const navigate = useNavigate();
+  const [projectData, setProjectData] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]); // Store Base64 image URLs
+  const projectId = "04d361b7-1822-4900-ad86-50d346167ded"; 
 
   useEffect(() => {
+    axios.get(`http://localhost:8080/api/projects/${projectId}`)
+      .then((response) => {
+        const data = response.data.response;
+        setProjectData(data);
+
+        // Since the images are already Base64, just add the prefix
+        if (data.images) {
+          const urls = data.images.map(base64 => `data:image/jpeg;base64,${base64}`);
+          setImageUrls(urls);
+        }
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the project data!", error);
+      });
+
     window.scrollTo(0, 0);
   }, []);
 
@@ -23,17 +39,20 @@ const HomeAutomation = () => {
     }, 100);
   };
 
- 
   const sliderSettings = {
-    dots: true, 
+    dots: true,
     infinite: true,
-    speed: 500, 
+    speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1, 
-    arrows: true, 
-    autoplay: true, 
-    autoplaySpeed: 3000, 
+    slidesToScroll: 1,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
+
+  if (!projectData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="home-automation-page">
@@ -44,67 +63,23 @@ const HomeAutomation = () => {
       </nav>
 
       <header className="page-header">
-        <h1>Home Automation Using OpenThread</h1>
+        <h1>{projectData.title}</h1>
       </header>
 
       <div className="content">
-      <p>
-        Home automation enables you to effectively manage your living space by remotely
-controlling and automating various devices and appliances. While current technologies
-like Wi-Fi, Bluetooth, and Zigbee have played crucial roles in this field, each comes
-with its own set of limitations. Wi-Fi, despite its broad connectivity options, can be
-power-intensive and may not always deliver reliable connections for numerous devices.
-Bluetooth, on the other hand, excels in short-range communication but may not suffice
-for a comprehensive home automation network. Although Zigbee offers a low-power
-mesh networking solution, its adoption can sometimes be restricted compared to more
-prevalent protocols.</p>
-<p>
-To tackle these limitations, OpenThread emerges as a revolutionary solution. Built
-upon the Thread networking protocol. It utilizes a mesh network paradigm, enabling
-devices to connect and relay signals among themselves, thus establishing a robust
-and self-repairing network that ensures data transmission even if certain devices are
-momentarily inaccessible. Furthermore, OpenThread places a high priority on security,
-incorporating built-in features to protect your network from unauthorized access.
-In comparison to existing technologies, OpenThread distinguishes itself with
-a trio of advantages—minimal power consumption, scalability to accommodate a
-growing array of devices, and robust security—rendering it a future-proof solution
-for constructing a dependable and efficient smart home automation ecosystem.
-        </p>
+        <p>{projectData.description1}</p>
 
-        <h2>ARCHITECTURE</h2>
-        <div className="archimage">
-          <img src={Home} alt="Architecture Diagram" />
-        </div>
+        <h2>{projectData.heading}</h2>
 
-        <h2>HARDWARE SETUP</h2>
         <Slider {...sliderSettings} className="hardware-slider">
-          <div>
-            <img
-              src={Hardware1}
-              alt="Hardware Setup Image 1"
-              className="slider-image"
-            />
-          </div>
-          <div>
-            <img
-              src={Hardware2}
-              alt="Hardware Setup Image 2"
-              className="slider-image"
-            />
-          </div>
+          {imageUrls.map((url, index) => (
+            <div key={index}>
+              <img src={url} alt={`Hardware Setup ${index + 1}`} className="slider-image" />
+            </div>
+          ))}
         </Slider>
 
-        <p>
-        The integration of the transmitter, receiver, and mobile application components
-results in a unified home automation system.
-The transmitter includes a server
-component housing API keys and links to connected channels. Simultaneously, the
-receiver incorporates a smart module,enabling control over two devices. A custom-
-built mobile application, featuring a login page and control interface, complements
-the system.
-This application integrates API keys and channel links to facilitate
-transmission, simplifying user interaction with the system.
-        </p>
+        <p>{projectData.description2}</p>
       </div>
 
       <footer className="footer">

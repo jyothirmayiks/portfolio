@@ -65,6 +65,7 @@
   .home-section {
     padding: 180px; 
     margin-left: -70px;
+    min-height: 50vh;
   }
 
   .home-section h2 {
@@ -107,7 +108,7 @@
 
 @media (max-width: 480px) {
   .home-section {
-    padding: 100px; 
+    padding: 130px; 
     min-height: 50vh;
     text-align: left;
   }

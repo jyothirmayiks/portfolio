@@ -109,6 +109,7 @@
     overflow-x: auto; 
     padding: 0.5rem 3rem;
     justify-content: flex-start;
+    min-height: 50vh;
   }
 
   .projects-carousel::-webkit-scrollbar {

@@ -1,17 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
+import axios from "axios"; 
 import "./ProjectPageCss.css";
-import Home from "/home/jyothirmayiks/Downloads/portfolio/src/assets/archhearing.png";
-import Hardware1 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h3.jpg";
-import Hardware2 from "/home/jyothirmayiks/Downloads/portfolio/src/assets/h4.jpeg";
 
 const HomeAutomation = () => {
   const navigate = useNavigate();
+  const [projectData, setProjectData] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]); 
+  const projectId = "1cea814d-a36d-42dc-a619-b759f451f593"; 
 
-   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/projects/${projectId}`)
+      .then((response) => {
+        const data = response.data.response;
+        setProjectData(data);
+
+        
+        if (data.images) {
+          const urls = data.images.map(base64 => `data:image/jpeg;base64,${base64}`);
+          setImageUrls(urls);
+        }
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the project data!", error);
+      });
+
+    window.scrollTo(0, 0);
+  }, []);
 
   const goToProjects = () => {
     navigate("/");
@@ -34,6 +50,10 @@ const HomeAutomation = () => {
     autoplaySpeed: 3000,
   };
 
+  if (!projectData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="home-automation-page">
       <nav className="pronavbar">
@@ -43,55 +63,23 @@ const HomeAutomation = () => {
       </nav>
 
       <header className="page-header">
-        <h1>Hearing aid using IC741 Opamp</h1>
+        <h1>{projectData.title}</h1>
       </header>
 
       <div className="content">
-        <p>
-          The circuit describes here is used to amplify the weak signals so that
-          it can be heard properly. Many people lose there their hearing power
-          because of old age or due to hearing loud music or because of any
-          another reason. So to amplify the weak signals they can use this
-          circuit which is used to enhance the weak signals as similar to common
-          audio amplifier. Advantage of this circuit is high sensitivity; it
-          consumes low current and uses commonly available components and light
-          weight. A hearing aid is a device designed to improve hearing by
-          making sound audible to a person with hearing loss.
-        </p>
+        <p>{projectData.description1}</p>
 
-        <h2>ARCHITECTURE</h2>
-        <div className="archimage">
-          <img src={Home} alt="Architecture Diagram" />
-        </div>
+        <h2>{projectData.heading}</h2>
 
-        <h2>HARDWARE SETUP</h2>
         <Slider {...sliderSettings} className="hardware-slider">
-          <div>
-            <img
-              src={Hardware1}
-              alt="Hardware Setup Image 1"
-              className="slider-image"
-            />
-          </div>
-          <div>
-            <img
-              src={Hardware2}
-              alt="Hardware Setup Image 2"
-              className="slider-image"
-            />
-          </div>
+          {imageUrls.map((url, index) => (
+            <div key={index}>
+              <img src={url} alt={`Hardware Setup ${index + 1}`} className="slider-image" />
+            </div>
+          ))}
         </Slider>
 
-        <p>
-          The integration of the transmitter, receiver, and mobile application
-          components results in a unified home automation system. The
-          transmitter includes a server component housing API keys and links to
-          connected channels. Simultaneously, the receiver incorporates a smart
-          module,enabling control over two devices. A custom- built mobile
-          application, featuring a login page and control interface, complements
-          the system. This application integrates API keys and channel links to
-          facilitate transmission, simplifying user interaction with the system.
-        </p>
+        <p>{projectData.description2}</p>
       </div>
 
       <footer className="footer">

@@ -1,51 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Projects.css";
 
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(2); 
+  const [projects, setProjects] = useState([]); 
+  const [headerTitle, setHeaderTitle] = useState(""); 
+  const [headerDescription, setHeaderDescription] = useState(""); 
   const navigate = useNavigate();
 
-  const projects = [
-    {
-      id: 1,
-      title: "Hearing aid using IC741 Opamp",
-      description:
-        "Hearing aid is small enough to fit into a match-box as it uses only one IC and very few discrete components. Also works as a baby-phone by using a speaker instead of an ear-phone.",
-      path: "/hearingaid",
-    },
-    {
-      id: 2,
-      title: "Fire Fighting Robot",
-      description:
-        "A fire-fighting robot with the help of Arduino, flame sensor, and servo motors. Aims to develop an autonomous or semi-autonomous vehicle equipped with sensors to detect fire and actively extinguish flames using a water pump and nozzle.",
-      path: "/fire",
-    },
-    {
-      id: 3,
-      title: "Home Automation Using OpenThread",
-      description:
-        "OpenThread is an IPv6-based open standard that allows smart home devices to connect to the cloud securely and reliably. The project includes Thread Automation, which automates the Thread Test Harness software.",
-      path: "/homeautomation",
-    },
-    {
-      id: 4,
-      title: "Grievance Management System",
-      description:
-        "A web-based platform designed to streamline grievance submission, assignment, and resolution efficiently, with role-based access for Users, Supervisors, and Assignees.",
-      path: "/grieve",
-    },
-    {
-      id: 5,
-      title: "MCU Site",
-      description:
-        "A frontend-only Marvel-themed website created using HTML, CSS, and JavaScript. It showcases Marvel characters with an interactive design and smooth navigation, offering an engaging experience for fans.",
-      path: "/mcu",
-    },
-  ];
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/projectdetails")
+      .then((response) => {
+        const fetchedData = Array.isArray(response.data.response)
+          ? response.data.response
+          : [response.data.response]; 
+
+        setProjects(fetchedData);
+
+        
+        if (fetchedData.length > 0) {
+          setHeaderTitle(fetchedData[0].title);
+          setHeaderDescription(fetchedData[0].description1);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching projects:", error);
+      });
+  }, []);
 
   const handleCardClick = (index) => {
-    setActiveIndex(index);
+    setActiveIndex(index); 
   };
 
   const handleNavigate = (path) => {
@@ -54,13 +41,15 @@ const Projects = () => {
 
   return (
     <section id="projects" className="projects-section">
+      
       <div className="projects-header">
-        <h2>MY PROJECTS</h2>
-        <p>Some of the exciting works I have done so far!</p>
+        <h2>{headerTitle}</h2>
+        <p>{headerDescription}</p>
       </div>
+
+      
       <div className="projects-carousel">
         {projects.map((project, index) => {
-          
           let position = "";
           if (index === activeIndex) {
             position = "active"; 
@@ -76,12 +65,12 @@ const Projects = () => {
               className={`project-card ${position}`}
               onClick={() => handleCardClick(index)} 
             >
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
+              <h3>{project.heading}</h3>
+              <p>{project.description2}</p>
               <button
                 className="arrow"
                 onClick={(e) => {
-                  e.stopPropagation(); 
+                  e.stopPropagation();
                   handleNavigate(project.path); 
                 }}
               >
