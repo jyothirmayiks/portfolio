@@ -7,7 +7,7 @@ import "./ProjectPageCss.css";
 const HomeAutomation = () => {
   const navigate = useNavigate();
   const [projectData, setProjectData] = useState(null);
-  const [imageUrls, setImageUrls] = useState([]); // Store Base64 image URLs
+  const [imageUrls, setImageUrls] = useState([]); 
   const projectId = "04d361b7-1822-4900-ad86-50d346167ded"; 
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const HomeAutomation = () => {
         const data = response.data.response;
         setProjectData(data);
 
-        // Since the images are already Base64, just add the prefix
+        
         if (data.images) {
           const urls = data.images.map(base64 => `data:image/jpeg;base64,${base64}`);
           setImageUrls(urls);

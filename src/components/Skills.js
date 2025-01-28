@@ -1,29 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Skills.css";
 
 const Skills = () => {
-  const skills = [
-    { name: "HTML", logo: "https://cdn-icons-png.flaticon.com/512/919/919827.png" },
-    { name: "CSS", logo: "https://cdn-icons-png.flaticon.com/512/919/919826.png" },
-    { name: "JavaScript", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" },
-    { name: "React", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" },
-    { name: "Bootstrap", logo: "https://cdn-icons-png.flaticon.com/512/5968/5968672.png" },
-    { name: "Java", logo: "https://cdn-icons-png.flaticon.com/512/226/226777.png" },
-    { name: "Spring Boot", logo: "https://www.vectorlogo.zone/logos/springio/springio-icon.svg" },
-    { name: "Git", logo: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" },
-    { name: "PostgreSQL", logo: "https://cdn-icons-png.flaticon.com/512/5968/5968342.png" },
-  ];
+  const [skills, setSkills] = useState([]);
 
-  const duplicateSkills = [...skills, ...skills];
+  useEffect(() => {
+    
+    axios.get("http://localhost:8080/api/skills") 
+      .then((response) => {
+        setSkills(response.data.response); 
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the skills data:", error);
+      });
+  }, []);
+
+  const duplicateSkills = [...skills, ...skills]; 
 
   return (
     <section id="skills" className="skills-section">
       <h2 className="skills-title">Skills</h2>
       <div className="skills-slider">
         <div className="skills-track">
-        {duplicateSkills.map((skill, index) => (
+          {duplicateSkills.map((skill, index) => (
             <div className="skill-item" key={index}>
-              <img src={skill.logo} alt={skill.name} className="skill-logo" />
+              <img src={`data:image/png;base64,${skill.image}`} alt={skill.name} className="skill-logo" />
               <p>{skill.name}</p>
             </div>
           ))}
