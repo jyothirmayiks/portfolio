@@ -139,14 +139,15 @@
     .education-header {
       flex-direction: row; 
       align-items: center;
-      gap: 20rem;
+      gap: 12rem;
       margin-top: 70px;
       min-height: 30vh;
     }
   
     .education-image {
      width: 50%;
-     margin-left: -200px;
+     margin-top: 50px;
+     margin-left: -150px;
     }
   
     .education-container {
@@ -172,6 +173,7 @@
     .education-year {
       font-size: 0.85rem;
     }
+
   }
   
   
@@ -236,7 +238,7 @@
   
     .education-container {
       max-width: 100%;
-      margin-top: 50px;
+      margin-top: -50px;
     }
   
     .education-box {

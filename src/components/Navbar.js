@@ -1,23 +1,43 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState(""); 
+  const navigate = useNavigate();
+  const location = useLocation(); 
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
+  
+  const handleNavigation = (path) => {
+    if (location.pathname === "/") {
+      
+      const element = document.getElementById(path);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(path);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); 
+    }
+    setMenuOpen(false); 
   };
 
+ 
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "education", "projects", "contact"];
-      let currentSection = "home"; 
+      let currentSection = "home";
 
       sections.forEach((section) => {
         const element = document.getElementById(section);
@@ -32,17 +52,20 @@ const Navbar = () => {
       setActiveSection(currentSection);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    if (location.pathname === "/") {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    } else {
+      
+      setActiveSection(""); 
+    }
+  }, [location.pathname]);
 
   return (
     <nav className="personalnavbar">
       <a
         className="personalnavbar-name"
-        onClick={() => scrollToSection("home")}
+        onClick={() => navigate("/")} 
         role="button"
         tabIndex="0"
       >
@@ -56,7 +79,7 @@ const Navbar = () => {
       <div className={`menu ${menuOpen ? "menu-open" : ""}`}>
         <a
           className={activeSection === "home" ? "active" : ""}
-          onClick={() => scrollToSection("home")}
+          onClick={() => handleNavigation("home")}
           role="button"
           tabIndex="0"
         >
@@ -64,7 +87,7 @@ const Navbar = () => {
         </a>
         <a
           className={activeSection === "about" ? "active" : ""}
-          onClick={() => scrollToSection("about")}
+          onClick={() => handleNavigation("about")}
           role="button"
           tabIndex="0"
         >
@@ -72,7 +95,7 @@ const Navbar = () => {
         </a>
         <a
           className={activeSection === "skills" ? "active" : ""}
-          onClick={() => scrollToSection("skills")}
+          onClick={() => handleNavigation("skills")}
           role="button"
           tabIndex="0"
         >
@@ -80,7 +103,7 @@ const Navbar = () => {
         </a>
         <a
           className={activeSection === "education" ? "active" : ""}
-          onClick={() => scrollToSection("education")}
+          onClick={() => handleNavigation("education")}
           role="button"
           tabIndex="0"
         >
@@ -88,7 +111,7 @@ const Navbar = () => {
         </a>
         <a
           className={activeSection === "projects" ? "active" : ""}
-          onClick={() => scrollToSection("projects")}
+          onClick={() => handleNavigation("projects")}
           role="button"
           tabIndex="0"
         >
@@ -96,7 +119,7 @@ const Navbar = () => {
         </a>
         <a
           className={activeSection === "contact" ? "active" : ""}
-          onClick={() => scrollToSection("contact")}
+          onClick={() => handleNavigation("contact")}
           role="button"
           tabIndex="0"
         >

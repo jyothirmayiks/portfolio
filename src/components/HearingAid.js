@@ -56,11 +56,7 @@ const HomeAutomation = () => {
 
   return (
     <div className="home-automation-page">
-      <nav className="pronavbar">
-        <button className="go-back-btn" onClick={goToProjects}>
-          <i className="bi bi-box-arrow-left"></i>
-        </button>
-      </nav>
+      
 
       <header className="page-header">
         <h1>{projectData.title}</h1>
@@ -82,9 +78,6 @@ const HomeAutomation = () => {
         <p>{projectData.description2}</p>
       </div>
 
-      <footer className="footer">
-        <p>&copy; 2025 Jyothirmayi. All rights reserved.</p>
-      </footer>
     </div>
   );
 };

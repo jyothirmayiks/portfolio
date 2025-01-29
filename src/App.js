@@ -20,11 +20,12 @@ function App() {
   return (
     <Router>
       <Routes>
+      
         <Route
           path="/"
           element={
             <div>
-              <Navbar />
+              <Navbar activePage="home" />
               <Home />
               <About />
               <Skills />
@@ -35,11 +36,70 @@ function App() {
             </div>
           }
         />
-        <Route path="/hearingaid" element={<HearingAid />} />
-        <Route path="/fire" element={<Fire />} />
-        <Route path="/homeautomation" element={<HomeAutomation />} />
-        <Route path="/grieve" element={<Grieve />} />
-        <Route path="/mcu" element={<MCU />} />
+
+       
+        <Route
+          path="/projects"
+          element={
+            <div>
+              <Navbar activePage="projects" />
+              <Projects />
+              <Footer />
+            </div>
+          }
+        />
+
+        
+        <Route
+          path="/hearingaid"
+          element={
+            <div>
+              <Navbar activePage="projects" />
+              <HearingAid />
+              <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/fire"
+          element={
+            <div>
+              <Navbar activePage="projects" />
+              <Fire />
+              <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/homeautomation"
+          element={
+            <div>
+              <Navbar activePage="projects" />
+              <HomeAutomation />
+              <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/grieve"
+          element={
+            <div>
+              <Navbar activePage="projects" />
+              <Grieve />
+              <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/mcu"
+          element={
+            <div>
+              <Navbar activePage="projects" />
+              <MCU />
+              <Footer />
+            </div>
+          }
+        />
       </Routes>
     </Router>
   );

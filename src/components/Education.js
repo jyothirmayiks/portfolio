@@ -9,7 +9,7 @@ const Education = () => {
   
   useEffect(() => {
     
-    fetch("http://localhost:8080/education") 
+    fetch("http://localhost:8080/api/education") 
       .then((response) => response.json())
       .then((data) => {
         setEducationData(data.response); 
