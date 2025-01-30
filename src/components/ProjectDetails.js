@@ -1,41 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
-import axios from "axios"; 
-import "./ProjectPageCss.css";
+import axios from "axios";
+import Navbar from "./Navbar";
+import "./ProjectDetails.css";
 
-const HomeAutomation = () => {
+
+const ProjectDetails = () => {
+  const { id } = useParams(); 
   const navigate = useNavigate();
   const [projectData, setProjectData] = useState(null);
-  const [imageUrls, setImageUrls] = useState([]); 
-  const projectId = "1cea814d-a36d-42dc-a619-b759f451f593"; 
+  const [imageUrls, setImageUrls] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/projects/${projectId}`)
+    axios.get(`http://localhost:8080/api/projects/${id}`)
       .then((response) => {
         const data = response.data.response;
         setProjectData(data);
 
-        
         if (data.images) {
           const urls = data.images.map(base64 => `data:image/jpeg;base64,${base64}`);
           setImageUrls(urls);
         }
       })
       .catch((error) => {
-        console.error("There was an error fetching the project data!", error);
+        console.error("Error fetching project data!", error);
       });
 
     window.scrollTo(0, 0);
-  }, []);
+  }, [id]);
 
   const goToProjects = () => {
     navigate("/");
     setTimeout(() => {
-      const section = document.getElementById("projects");
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   };
 
@@ -50,21 +48,17 @@ const HomeAutomation = () => {
     autoplaySpeed: 3000,
   };
 
-  if (!projectData) {
-    return <div>Loading...</div>;
-  }
+  if (!projectData) return <div>Loading...</div>;
 
   return (
-    <div className="home-automation-page">
-      
-
+    <div className="project-details-page">
+      <Navbar />
       <header className="page-header">
         <h1>{projectData.title}</h1>
       </header>
 
       <div className="content">
         <p>{projectData.description1}</p>
-
         <h2>{projectData.heading}</h2>
 
         <Slider {...sliderSettings} className="hardware-slider">
@@ -77,9 +71,8 @@ const HomeAutomation = () => {
 
         <p>{projectData.description2}</p>
       </div>
-
     </div>
   );
 };
 
-export default HomeAutomation;
+export default ProjectDetails;

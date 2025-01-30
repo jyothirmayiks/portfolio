@@ -8,19 +8,15 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Education from "./components/Education";
 import Projects from "./components/Projects";
+import ProjectDetails from "./components/ProjectDetails";
 import Contact from "./components/Contactme";
 import Footer from "./components/Footer";
-import HearingAid from "./components/HearingAid";
-import Fire from "./components/Fire";
-import HomeAutomation from "./components/HomeAutomation";
-import Grieve from "./components/Grieve";
-import MCU from "./components/MCU";
 
 function App() {
   return (
     <Router>
       <Routes>
-      
+        
         <Route
           path="/"
           element={
@@ -37,65 +33,12 @@ function App() {
           }
         />
 
-       
         <Route
-          path="/projects"
+          path="/project/:id"
           element={
             <div>
               <Navbar activePage="projects" />
-              <Projects />
-              <Footer />
-            </div>
-          }
-        />
-
-        
-        <Route
-          path="/hearingaid"
-          element={
-            <div>
-              <Navbar activePage="projects" />
-              <HearingAid />
-              <Footer />
-            </div>
-          }
-        />
-        <Route
-          path="/fire"
-          element={
-            <div>
-              <Navbar activePage="projects" />
-              <Fire />
-              <Footer />
-            </div>
-          }
-        />
-        <Route
-          path="/homeautomation"
-          element={
-            <div>
-              <Navbar activePage="projects" />
-              <HomeAutomation />
-              <Footer />
-            </div>
-          }
-        />
-        <Route
-          path="/grieve"
-          element={
-            <div>
-              <Navbar activePage="projects" />
-              <Grieve />
-              <Footer />
-            </div>
-          }
-        />
-        <Route
-          path="/mcu"
-          element={
-            <div>
-              <Navbar activePage="projects" />
-              <MCU />
+              <ProjectDetails />
               <Footer />
             </div>
           }
