@@ -1,0 +1,137 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(214, 214, 216);
+  }
+  
+  
+  .login-box {
+    display: flex;
+    width: 100%;
+    max-width: 1220px;
+    background: rgb(40, 40, 70);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  
+  .left-box {
+    width: 50%;
+    background: rgb(214, 214, 216);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .left-box img {
+    width: 100%;
+    height: auto;
+  }
+  
+  
+  .right-box {
+    width: 50%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(214, 214, 216);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
+  }
+  
+  .title span {
+    font-family: "Joti One", cursive;
+    color: rgb(214, 214, 216);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
+  }
+  
+  
+  .tagline {
+    font-size: 16px;
+    color: rgb(214, 214, 216);
+    margin-bottom: 20px;
+  
+  }
+  
+  
+  .sign-in-btn {
+    background-color: rgb(214, 214, 216);
+    border: none;
+    color: rgb(40, 40, 70);
+    padding: 5px 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .sign-in-btn:hover {
+    background-color: rgb(24, 24, 43);
+    color: white;
+  }
+  
+  
+  .login-form {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .login-form h2 {
+    margin-bottom: 20px;
+    color: rgb(214, 214, 216);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
+  }
+  
+  input::placeholder {
+    color: rgb(214, 214, 216) !important;
+  }
+  
+  
+  .form-control {
+    border-radius: 5px;
+    padding: 10px;
+    border: groove rgb(40, 40, 70);
+    background-color: rgb(40, 40, 70);
+    color: white !important;
+  }
+  
+  .form-control:focus {
+    background-color: transparent !important;  
+    border-color: #504e50 !important;
+    border: groove; 
+    box-shadow: none !important;  
+    outline: none !important; 
+  }
+  
+  
+  .btn {
+    background-color: rgb(172, 172, 173);
+    border: 4px outset rgb(142, 142, 143);
+    color: rgb(40, 40, 70);
+    font-size: 18px;
+    text-shadow: 1px 1px 1px rgba(40, 40, 70);
+  }
+  
+  .btn:hover {
+    background-color: rgb(24, 24, 43);
+    color: white;
+    border: 2px outset rgb(40, 40, 70);
+  }
+  
+  .error-message {
+    color: rgba(206, 40, 40, 0.918); 
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+  }
