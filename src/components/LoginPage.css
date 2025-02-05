@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgb(214, 214, 216);
+    background: linear-gradient(90deg,#9297be, #d6aee6);
   }
   
   
@@ -11,7 +11,7 @@
     display: flex;
     width: 100%;
     max-width: 1220px;
-    background: rgb(40, 40, 70);
+    background: linear-gradient(90deg,#9297be, #d6aee6);
     border-radius: 10px;
     overflow: hidden;
   }
@@ -19,7 +19,7 @@
   
   .left-box {
     width: 50%;
-    background: rgb(214, 214, 216);
+    background: linear-gradient(90deg,#9297be, #d6aee6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,34 +45,34 @@
   .title {
     font-size: 28px;
     font-weight: bold;
-    color: rgb(214, 214, 216);
+    color: rgb(40, 40, 70);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
   }
   
   .title span {
     font-family: "Joti One", cursive;
-    color: rgb(214, 214, 216);
+    color: rgb(40, 40, 70);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
   }
   
   
   .tagline {
     font-size: 16px;
-    color: rgb(214, 214, 216);
+    color: rgb(40, 40, 70);
     margin-bottom: 20px;
   
   }
   
   
   .sign-in-btn {
-    background-color: rgb(214, 214, 216);
-    border: none;
-    color: rgb(40, 40, 70);
-    padding: 5px 10px;
-    font-size: 18px;
+    background-color: rgb(40, 40, 70) !important;
+    border: groove rgb(40, 40, 70) !important;
+    color: rgb(243, 243, 245) !important;
+    padding: 2px 20px;
+    font-size: 15px;
     cursor: pointer;
     border-radius: 5px;
-    transition: 0.3s;
+    transition: 0.1s;
   }
   
   .sign-in-btn:hover {
@@ -88,7 +88,7 @@
   
   .login-form h2 {
     margin-bottom: 20px;
-    color: rgb(214, 214, 216);
+    color: rgb(40, 40, 70);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
   }
   
@@ -100,24 +100,24 @@
   .form-control {
     border-radius: 5px;
     padding: 10px;
-    border: groove rgb(40, 40, 70);
+    border: groove rgb(40, 40, 70) !important;
     background-color: rgb(40, 40, 70);
     color: white !important;
   }
   
   .form-control:focus {
     background-color: transparent !important;  
-    border-color: #504e50 !important;
-    border: groove; 
+    border-color: #000000 !important;
+    color: black !important;
     box-shadow: none !important;  
     outline: none !important; 
   }
   
   
   .btn {
-    background-color: rgb(172, 172, 173);
-    border: 4px outset rgb(142, 142, 143);
-    color: rgb(40, 40, 70);
+    background-color: rgb(40, 40, 70);
+    border: 4px outset rgb(40, 40, 70);
+    color: rgb(255, 255, 255);
     font-size: 18px;
     text-shadow: 1px 1px 1px rgba(40, 40, 70);
   }

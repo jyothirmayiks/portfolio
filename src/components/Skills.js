@@ -7,7 +7,7 @@ const Skills = () => {
 
   useEffect(() => {
     
-    axios.get("http://localhost:8080/api/skills") 
+    axios.get("http://localhost:8082/api/skills") 
       .then((response) => {
         setSkills(response.data.response); 
       })

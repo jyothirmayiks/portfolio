@@ -11,6 +11,8 @@ import Projects from "./components/Projects";
 import ProjectDetails from "./components/ProjectDetails";
 import Contact from "./components/Contactme";
 import Footer from "./components/Footer";
+import LoginPage from "./components/LoginPage";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
           }
         />
 
+        
         <Route
           path="/project/:id"
           element={
@@ -43,6 +46,10 @@ function App() {
             </div>
           }
         />
+
+       
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

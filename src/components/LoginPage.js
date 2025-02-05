@@ -20,19 +20,30 @@ const LoginPage = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:8082/api/users/login", loginData, {
-        headers: { "Content-Type": "application/json" },
-      });
+      
+      const response = await axios.post(
+        "http://localhost:8082/api/users/login",
+        loginData,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-      if (response.data.statusCode === 200) {
-        localStorage.setItem("portfolioUser", username);
+      
+      if (response.status === 200) {
+        sessionStorage.setItem("portfolioUser", username);
+        sessionStorage.setItem("isLoggedIn", "true");
+
+        
         navigate("/dashboard");
-      } else {
-        setErrorMessage("Invalid login attempt");
       }
     } catch (error) {
-      console.error("Failed to login", error);
-      setErrorMessage("Invalid User");
+      console.error("Login failed", error);
+      if (error.response && error.response.status === 401) {
+        setErrorMessage("Invalid username or password");
+      } else {
+        setErrorMessage("Something went wrong, please try again.");
+      }
     }
   };
 
@@ -40,7 +51,7 @@ const LoginPage = () => {
     <div className="login-container">
       <div className="login-box shadow-lg">
         <div className="left-box">
-          <img src="/Authentication-pana.png" alt="Illustration" className="img-fluid" />
+          <img src="/Authentication-pana (1).png" alt="Illustration" className="img-fluid" />
         </div>
 
         <div className="right-box text-center">
@@ -55,7 +66,7 @@ const LoginPage = () => {
           ) : (
             <form onSubmit={handleLogin} className="login-form">
               <h2>Login to Your Account</h2>
-              {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Error message display */}
+              {errorMessage && <div className="error-message">{errorMessage}</div>}
               <div className="mb-3">
                 <input
                   type="text"

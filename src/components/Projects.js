@@ -10,7 +10,7 @@ const Projects = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/projects") 
+      .get("http://localhost:8082/api/projects") 
       .then((response) => {
         const fetchedData = Array.isArray(response.data.response)
           ? response.data.response
@@ -55,8 +55,8 @@ const Projects = () => {
               className={`project-card ${position}`}
               onClick={() => handleCardClick(index)}
             >
-              <h3>{project.title1}</h3> 
-              <p>{project.description11}</p> 
+              <h3>{project.title}</h3> 
+              <p>{project.description}</p> 
               <button
                 className="arrow"
                 onClick={(e) => {

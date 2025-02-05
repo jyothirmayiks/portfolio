@@ -13,7 +13,7 @@ const ProjectDetails = () => {
   const [imageUrls, setImageUrls] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/projects/${id}`)
+    axios.get(`http://localhost:8082/api/projects/${id}`)
       .then((response) => {
         const data = response.data.response;
         setProjectData(data);
